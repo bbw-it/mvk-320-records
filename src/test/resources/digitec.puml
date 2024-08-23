@@ -1,0 +1,50 @@
+@startuml
+
+object Category {
+	id = 77
+	title = Periferie
+}
+Category --> "1" Category : parent
+
+class Product {
+	id = 12817320
+	name = Dell U2720Q
+	price = 669.00
+}
+Product --> "1" Category
+Product --> "n" Picture
+Product "1" <-- Rating
+
+class Stock {
+	amount = 8
+}
+Stock --> "1" Product
+
+class Picture {
+	format = jpeg
+	rawData = 0x123
+}
+
+class Rating {
+	stars = 3
+	comment = mit grossen Macken
+}
+Rating --> "1" User
+
+class DealOfTheDay {
+	date = 2021-09-27
+}
+DealOfTheDay --> "1" Product
+
+class User {
+	id = 583796
+	username = mogryto
+	registeredAt = 2014-06-01
+}
+
+class LiveFeed {
+}
+LiveFeed --> "1" User
+LiveFeed --> "1" Product
+
+@enduml
